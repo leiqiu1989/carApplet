@@ -1,0 +1,91 @@
+.carlist {
+  font-size: 14px;
+  color: #1e2227;
+}
+
+.title {
+  font-size: 14px;
+  border-bottom: 1px solid #efefef;
+  padding: 10px 0 10px 15px;
+}
+
+.content {
+  background: #efeff4;
+  padding: 10px;
+}
+
+.item-block {
+  background: #fff;
+  border-radius: 4px;
+}
+
+.item-block:not(:last-child) {
+  margin-bottom: 10px;
+}
+
+.item-title {
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.item-title-plate {
+  font-weight: 700;
+  font-size: 16px;
+}
+
+.item-content {
+  padding: 10px;
+  border-top: 1px solid #dfdfdf;
+  position: relative;
+}
+
+.item-content-short {
+  width: 70%;
+}
+
+.item-content-block {
+  padding: 2px;
+}
+
+.item-content-track {
+  border: 1px solid #4fa0fb;
+  border-radius: 4px;
+  text-align: center;
+  padding: 5px;
+  letter-spacing: 2px;
+  position: absolute;
+  top: 12px;
+  right: 10px;
+  font-size: 12px;
+}
+
+.track-icon {
+  width: 24rpx;
+  height: 24rpx;
+  vertical-align: middle;
+}
+
+.status-icon {
+  width: 16px;
+  height: 16px;
+  vertical-align: middle;
+}
+
+.status-text {
+  display: inline-block;
+  padding-left: 5px;
+  position: relative;
+  top: 1px;
+}
+
+.online {
+  color: #1aad1a;
+  padding: 2px 0;
+}
+
+.offline {
+  color: #92979e;
+  padding: 2px 0;
+}

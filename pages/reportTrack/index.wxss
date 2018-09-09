@@ -1,0 +1,17 @@
+.reportContainer {
+  background: #fcf9fe;
+  width: 100%;
+  height: 100vh;
+  padding-top: 20px;
+}
+
+.report-icon {
+  width: 40px;
+  height: 40px;
+}
+
+.report-icon-text {
+  height: 40px;
+  line-height: 40px;
+  padding-left: 10px;
+}

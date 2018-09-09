@@ -1,0 +1,55 @@
+<view class='reportContainer'>
+  <view class="weui-panel">
+    <view class="weui-panel__bd">
+      <view class="weui-media-box weui-media-box_small-appmsg">
+        <view class="weui-cells weui-cells_in-small-appmsg">
+          <navigator url="../reportMileage/index" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+            <view class="weui-cell__hd report-icon">
+              <image src="../../resources/report-mileage.png" class='full' />
+            </view>
+            <view class="weui-cell__bd weui-cell_primary">
+              <view class='report-icon-text'>车辆里程报表</view>
+            </view>
+            <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+          </navigator>          
+          <navigator url="../reportOil/index" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+            <view class="weui-cell__hd report-icon">
+              <image src="../../resources/report-oil.png" class='full' />
+            </view>
+            <view class="weui-cell__bd weui-cell_primary">
+              <view class='report-icon-text'>车辆油耗报表</view>
+            </view>
+            <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+          </navigator>
+          <navigator url="../reportTrack/index" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+            <view class="weui-cell__hd report-icon">
+              <image src="../../resources/report-track.png" class='full' />
+            </view>
+            <view class="weui-cell__bd weui-cell_primary">
+              <view class='report-icon-text'>车辆轨迹报表</view>
+            </view>
+            <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+          </navigator>
+          <navigator url="../reportLog/index" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+            <view class="weui-cell__hd report-icon">
+              <image src="../../resources/report-log.png" class='full' />
+            </view>
+            <view class="weui-cell__bd weui-cell_primary">
+              <view class='report-icon-text'>车辆运行日志</view>
+            </view>
+            <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+          </navigator>
+          <navigator url="../reportWarn/index" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+            <view class="weui-cell__hd report-icon">
+              <image src="../../resources/report-warn.png" class='full' />
+            </view>
+            <view class="weui-cell__bd weui-cell_primary">
+              <view class='report-icon-text'>车辆报警记录</view>
+            </view>
+            <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+          </navigator>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

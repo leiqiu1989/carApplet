@@ -1,0 +1,62 @@
+<view class='report'>
+  <view class="weui-cell weui-cell_select bg-white">
+    <view class="weui-cell__bd">
+      <picker bindchange="bindCarChange" value="{{carIndex}}" range-key="licenseplate" range="{{carList}}">
+        <view class="weui-select">{{carList[carIndex].licenseplate}}</view>
+      </picker>
+    </view>
+  </view>
+  <view class='toolbar clearfix'>
+    <view class='button pull-left prevDay' data-type="yesterday" bindtap="search">前一天</view>
+    <view class="date pull-left">
+      <picker mode="date" value="{{date}}" end="{{ endDate }}" bindchange="bindDateChange">
+        <view class="weui-input date-text">{{date}}</view>
+      </picker>
+    </view>
+    <view class='button pull-right afterDay' data-type="afterday" bindtap="search">后一天</view>
+  </view>
+  <view class="summary {{ List.length > 0 ? 'border-bottom' : '' }}">
+    <view class="clearfix">
+      <view class="pull-left tb-cell">行驶时长</view>
+      <view class="pull-left tb-cell">行驶里程</view>
+      <view class="pull-left tb-cell">最高时速</view>
+    </view>
+    <view class="clearfix">
+      <view class="pull-left tb-cell bold smaller-size">{{ driverTime }}</view>
+      <view class="pull-left tb-cell bold smaller-size">
+        {{ driverMileage }}
+        <view class="unit">Km</view>
+      </view>
+      <view class="pull-left tb-cell bold smaller-size">{{ highSpeed }}
+        <view class="unit">Km/h</view>
+      </view>
+    </view>
+  </view>
+  <view class='mileage-list' wx:if="{{ List.length > 0 }}">
+    <scroll-view scroll-y='true' class='full'>
+      <view class='list-table' wx:for="{{List}}" wx:key="{{ index }}">
+        <view class='list-row clearfix'>
+          <view class='list-cell list-cell-2'>
+            {{ item.gpstime }}
+          </view>
+          <view class='list-cell list-cell-2 text-align-center'>
+            {{ item.speed }} Km/h
+          </view>
+        </view>
+        <view class='list-row'>
+          <view class='list-cell-1'>
+            {{ item.status }}
+          </view>
+        </view>
+        <view class='list-row'>
+          <view class='list-cell-1'>
+            {{ item.location }}
+          </view>
+        </view>
+      </view>
+    </scroll-view>
+  </view>
+  <view class=" weui-loadmore weui-loadmore_line" wx:else hidden="{{ emptyData }} ">
+    <view class="weui-loadmore__tips weui-loadmore__tips_in-line ">暂无数据</view>
+  </view>
+</view>

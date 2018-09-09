@@ -1,0 +1,47 @@
+{
+  "pages": [    
+    "pages/guide/index",
+    "pages/index/index",
+    "pages/carList/index",    
+    "pages/user/index",
+    "pages/login/login",
+    "pages/track/index",
+    "pages/report/index",
+    "pages/reportLog/index",
+    "pages/reportMileage/index",
+    "pages/reportOil/index",
+    "pages/reportTrack/index",
+    "pages/reportWarn/index"
+  ],
+  "window": {
+    "backgroundTextStyle": "dark",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "欢迎",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "color": "#92979E",
+    "selectedColor": "#F6C202",
+    "backgroundColor": "#363C43",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "iconPath": "resources/tab-car.png",
+        "selectedIconPath": "resources/select-tab-car.png",
+        "text": "车 辆"
+      },
+      {
+        "pagePath": "pages/report/index",
+        "iconPath": "resources/tab-report.png",
+        "selectedIconPath": "resources/select-tab-report.png",
+        "text": "报 表"
+      },
+      {
+        "pagePath": "pages/user/index",
+        "iconPath": "resources/tab-user.png",
+        "selectedIconPath": "resources/select-tab-user.png",
+        "text": "我 的"
+      }
+    ]
+  }
+}

@@ -1,0 +1,10 @@
+<swiper>
+  <block wx:for="{{imgs}}" wx:for-index="index" wx:key="*this">
+    <swiper-item class="swiper-items">
+      <view class='swiper-container'>
+        <image class="swiper-image" src="{{item}}"></image>
+        <view class='swiper-text'>华峰安防</view>
+      </view>
+    </swiper-item>
+  </block>
+</swiper>

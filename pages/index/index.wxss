@@ -1,0 +1,86 @@
+/**index.wxss**/
+
+.weui-search-bar {
+  border-bottom: 0;
+}
+
+.cover-list {
+  background: #fff;
+  width: 250px;
+  height: 160px;
+  position: fixed;
+  top: 200px;
+  border: 1px solid #dadada;
+}
+
+.cover-list  .list-item-content .list-item-block {
+  margin: 10px 0;
+}
+
+.cover-list .trackHistory {
+  color: #6ba9d7;
+}
+
+.list {
+  font-size: 14px;
+}
+
+.list-item-title {
+  padding: 10px;
+}
+
+.list-item-content {
+  border: 1px solid #dadada;
+  border-left: 0;
+  border-right: 0;
+  padding: 5px;
+}
+
+.list-item-content:last-child {
+  border-bottom: 0;
+}
+
+.list-item-block {
+  margin: 5px 0;
+}
+
+.list-item-block > label {
+  width: 50%;
+  display: inline-block;
+}
+
+.list-item-block > label.location {
+  width: 80%;
+  overflow: hidden;
+  white-space: nowrapl;
+  text-overflow: ellipsis;
+}
+
+.list-item-block > label.history {
+  width: 20%;
+  color: #1b9ed4;
+}
+
+.list-item-block> label.history > .navigator {
+  padding: 2px;
+  text-align: center;
+}
+
+.list-navigator-hover {
+  color: #fff;
+  background-color: green;
+}
+
+/*自定义navbar*/
+
+.weui-navbar__item {
+  color: #1e2227;
+}
+
+.weui-navbar__item.weui-bar__item_on {
+  color: #4fa0fb;
+}
+
+.weui-navbar__slider {
+  background-color: #4fa0fb;
+}

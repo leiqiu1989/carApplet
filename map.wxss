@@ -1,0 +1,101 @@
+.cover-view-switch {
+  position: fixed;
+  right: 10px;
+  bottom: 10px;
+  background: #fff;
+  box-shadow: 0 2px 4px 0 rgba(127, 127, 127, 0.44);
+  border-radius: 4px;
+  color: #4fa0fb;
+  font-size: 14px;
+  padding: 8px;
+}
+
+.image-icon {
+  display: inline-block;
+  width: 32px;
+  height: 32px;
+  vertical-align: middle;
+}
+
+.cover-view-switch-text {
+  text-align: center;
+  letter-spacing: 2px;
+  line-height: 1.5;
+}
+
+.switch-patch {
+  bottom: 180px;
+}
+
+.cover-view-image {
+  position: fixed;
+  background: #fff;
+  height: 32px;
+  top: 110px;
+  left: 10px;
+  padding: 5px 10px;
+  font-size: 14px;
+  box-shadow: 0 2px 4px 0 rgba(127, 127, 127, 0.44);
+  border-radius: 4px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.image-text {
+  display: inline-block;
+  height: 32px;
+  line-height: 32px;
+  letter-spacing: 2px;
+  padding-left: 5px;
+}
+
+.online {
+  color: #1aad1a;
+}
+
+.line {
+  display: inline-block;
+  width: 1px;
+  height: 22px;
+  background: #dfdfdf;
+  margin: 0 10px;
+}
+
+.offline {
+  color: #92979e;
+}
+
+.map-marke-detail {
+  position: fixed;
+  left: 20px;
+  right: 20px;
+  bottom: 20px;
+  width: calc(100% - 40px);
+  font-size: 24rpx;
+}
+
+.map-marke-detail .item-content-block {
+  padding: 5px 0;
+}
+
+.map-marke-detail .status-icon {
+  float: left;
+  padding-right: 5px;
+}
+
+.map-marke-detail .track-icon {
+  float: left;
+  position: relative;
+  top: 2px;
+  padding-right: 5px;
+}
+
+.map-marke-detail .status-text {
+  top: 2px;
+}
+
+.map-marke-detail .close-icon {
+  width: 20px;
+  height: 20px;
+}

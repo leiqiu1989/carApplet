@@ -1,0 +1,28 @@
+.user-icon {
+  width: 130rpx;
+  height: 130rpx;
+}
+
+.user-text {
+  height: 130rpx;
+  line-height: 130rpx;
+  padding-left: 40rpx;
+}
+
+.user-info {
+  height: 100vh;
+  background: #fcf9fe;
+}
+
+.user-content {
+  background: #fff;
+  border: 1px solid #efefef;
+  border-left: 0;
+  border-right: 0;
+  padding: 40rpx;
+  padding-right: 0;
+}
+.user-footer{
+  padding: 40rpx;
+  padding-top: 80rpx;
+}

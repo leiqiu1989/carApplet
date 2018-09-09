@@ -1,0 +1,81 @@
+<map id="trackMap" longitude="113.096008" latitude="23.016548" scale="14" polyline="{{polyline}}" markers="{{markers}}" include-points="{{ includePoints }}">
+</map>
+<view class='trackFilter'>
+  <view class='flex-container time-btn-group'>
+    <view class='time-btn-normal {{ eventType == "today" ? "earlier-time" : "" }}' bindtap='search' data-type="today">
+      今天
+    </view>
+    <view class='time-btn-normal {{ eventType == "yesterday" ? "earlier-time" : "" }}' bindtap='search' data-type="yesterday">
+      昨天
+    </view>
+    <view class='time-btn-normal {{ eventType == "old" ? "earlier-time" : "" }}' bindtap='search' data-type="old">
+      前天
+    </view>
+    <view class='time-btn-normal {{ eventType == "more" ? "earlier-time" : "" }}' bindtap='search' data-type="more">
+      更早时间
+    </view>
+  </view>
+  <view class='time-group'>
+    <view wx:if="{{ eventType == 'more' }}">
+      <view class="weui-flex">
+        <view class="weui-flex__item">
+          <view class="weui-flex">
+            <view class='date-icon2'><image class='date-icon-base' src='../../resources/date.png'></image></view>
+            <view class="weui-flex__item align-left">
+            <picker mode="multiSelector" bindchange="bindMultiPickerChange_Start" bindcolumnchange="bindMultiPickerColumnChange_Start" value="{{multiIndex_Start}}" 
+            range="{{multiArray}}">
+            <view class='weui-input date-text'>{{date}}</view>
+          </picker>
+            </view>
+          </view>
+        </view>
+        <view class="weui-flex__item">
+          <view class="weui-flex">
+            <view class='date-icon2'><image class='date-icon-base' src='../../resources/date.png'></image></view>
+            <view class="weui-flex__item align-left">
+            <picker mode="multiSelector" bindchange="bindMultiPickerChange_End" bindcolumnchange="bindMultiPickerColumnChange_End" value="{{multiIndex_End}}" range="{{multiArray}}">
+            <view class='weui-input date-text'>{{endDate}}</view>
+          </picker>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view wx:else class="flex-container">
+      <image class='date-icon-base date-icon' src='../../resources/date.png'></image>
+      <view class='weui-input date-text'>{{date}}</view>
+    </view>
+  </view>
+  <view class='plateNo-container clearfix'>
+    <view class="plateNo-label">车牌号码：</view>
+    <view class='pull-left'>
+      <input class="plateNo-input" bindinput="plateNoInput" placeholder='请输入查询的车牌号码' value='{{ plateNo }}' />
+    </view>
+  </view>
+  <view class='padding-10'>
+    <button class="weui-btn letter-space large-size" bindtap='btnSearch' type="primary">查询轨迹</button>
+  </view>
+  <view class='playContainer clearfix'>
+    <view class='tb-15'>
+      <view class="play">
+        <image src='../../resources/play.png' wx:if="{{ !isRun }}" bindtap='start'></image>
+        <image src='../../resources/pause.png' wx:else bindtap='pause'></image>
+      </view>
+    </view>
+    <view class='car-info'>
+      <view class='tb-50'>速度：{{ runData.speed }} Km/h</view>
+      <view class='tb-50 ellipsis'>状态：{{ runData.status }}</view>
+      <view class='tb-100 ellipsis'>位置：{{ runData.location }}</view>
+    </view>
+    <view class='circle-container'>
+      <view class="circle-wrapper">
+        <view class='process-text'>
+          <view class='distance'>{{ runData.totalDistance }}</view>
+          <view class='unit'>km</view>
+        </view>
+        <canvas class='circleBg' canvas-id="canvasProgressBg"></canvas>
+        <canvas class='circle' canvas-id="canvasProgress"> </canvas>
+      </view>
+    </view>
+  </view>
+</view>

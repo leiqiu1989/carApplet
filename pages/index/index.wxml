@@ -1,0 +1,93 @@
+<!--index.wxml-->
+<view class="weui-tab">
+  <view class="weui-navbar">
+    <block wx:for="{{tabs}}" wx:key="*this">
+      <view id="{{index}}" class="weui-navbar__item {{activeIndex == index ? 'weui-bar__item_on' : ''}}" bindtap="tabClick">
+        <view class="weui-navbar__title">{{item}}({{count[index]}})</view>
+      </view>
+    </block>
+    <view class="weui-navbar__slider" style="left: {{sliderLeft}}px; transform: translateX({{sliderOffset}}px); -webkit-transform: translateX({{sliderOffset}}px);"></view>
+  </view>
+  <view class="weui-tab__panel">
+    <view class="weui-tab__content">
+      <view class="weui-search-bar">
+        <view class="weui-search-bar__form">
+          <view class="weui-search-bar__box">
+            <icon class="weui-icon-search_in-box" type="search" size="14"></icon>
+            <input type="text" class="weui-search-bar__input" placeholder="搜索" value="{{inputVal}}" focus="{{inputShowed}}" bindinput="inputTyping" />
+            <view class="weui-icon-clear" wx:if="{{inputVal.length > 0}}" bindtap="clearInput">
+              <icon type="clear" size="14"></icon>
+            </view>
+          </view>
+          <label class="weui-search-bar__label" hidden="{{inputShowed}}" bindtap="showInput">
+            <icon class="weui-icon-search" type="search" size="14"></icon>
+            <view class="weui-search-bar__text">搜索</view>
+          </label>
+        </view>
+        <view class="weui-search-bar__cancel-btn" hidden="{{!inputShowed}}" bindtap="hideInput">取消</view>
+      </view>
+    </view>
+  </view>
+  <view class="weui-tab__panel no-padding">
+    <view class="weui-tab__content">
+      <map wx:if="{{ mapShow && mapHeight > 0 }}" id="map" longitude="113.096008" latitude="23.016548" scale="14" markers="{{markers}}" include-points="{{ includePoints }}" bindmarkertap="markertap" style="width:100%;height:{{mapHeight}}px">
+        <cover-view class='cover-view-image' hidden='{{ !mapShow }}'>
+          <cover-view class='flex-center'>
+            <cover-image class='image-icon' src="../../resources/online.png"></cover-image>
+            <cover-view class='image-text'>在线</cover-view>
+          </cover-view>
+          <cover-view class='line'></cover-view>
+          <cover-view class='flex-center'>
+            <cover-image class='image-icon ' src="../../resources/offline.png"></cover-image>
+            <cover-view class='image-text'>离线</cover-view>
+          </cover-view>
+        </cover-view>
+        <cover-view class='cover-view-switch {{ switchCls }}'>
+          <cover-image class='image-icon' src="{{ iconUrl }}" bindtap="changeMode"></cover-image>
+          <cover-view class='cover-view-switch-text'>{{modeText}}</cover-view>
+        </cover-view>
+        <cover-view class='map-marke-detail' hidden='{{ hiddenMark }}'>
+          <cover-view class='item-block'>
+            <cover-view class='item-title'>
+              <cover-view class='item-title-plate'>{{ markerDetail.licenseplate }}</cover-view>
+              <cover-view class='{{ markerDetail.cls }} flex-center'>
+                <cover-view class='margin-right-20'>
+                  <cover-image src='{{ markerDetail.iconUrl }}' class='status-icon'></cover-image>
+                  <cover-view class='status-text'>{{ markerDetail.online }}</cover-view>
+                </cover-view>
+                <cover-image class="close-icon" src="../../resources/close.png" bindtap='closeMarkerDetail' />
+              </cover-view>
+            </cover-view>
+            <cover-view class='item-content'>
+              <cover-view class='item-content-block item-content-short'>速度：{{ markerDetail.speed }}Km/h</cover-view>
+              <cover-view class='item-content-block item-content-short'>状态：{{ markerDetail.status }}</cover-view>
+              <cover-view class='item-content-block ellipsis'>位置：{{ markerDetail.location }}</cover-view>
+              <cover-view class='item-content-track' bindtap='trackHistory' data-plateno="{{ markerDetail.licenseplate }}">
+                <cover-image class='track-icon' src='../../resources/icon-track.png'></cover-image>
+                轨迹回放
+              </cover-view>
+            </cover-view>
+          </cover-view>
+        </cover-view>
+      </map>
+      <view wx:else hidden='{{ mapShow }}' style='height:{{mapHeight}}px'>
+        <scroll-view scroll-y='true' class='full' wx:if="{{ List.length > 0 }}">
+          <view class="weui-cells weui-cells_after-title small-size">
+            <navigator url="../carList/index?tabIndex={{ activeIndex }}" data-carinfo="{{item}}" bindtap='navCarList' wx:for="{{List}}" wx:key="index" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+              <view class="weui-cell__bd">
+                {{ item.dname }} ({{ activeIndex == 1 ? item.online_no : ( activeIndex == 2 ? item.offline : item.vehicle_no ) }})</view>
+              <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+            </navigator>
+          </view>
+        </scroll-view>
+        <view wx:else class="weui-loadmore weui-loadmore_line">
+          <view class="weui-loadmore__tips weui-loadmore__tips_in-line">暂无数据</view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+<view class='cover-view-switch' hidden='{{ mapShow }}'>
+  <image class='image-icon' src="{{ iconUrl }}" bindtap="changeMode"></image>
+  <view class='cover-view-switch-text'>{{modeText}}</view>
+</view>

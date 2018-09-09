@@ -1,0 +1,32 @@
+<!--login.wxml-->
+<view class="login">
+  <view class='flex-center'>
+    <image class='logo' src='../../resources/logo.png'></image>
+  </view>
+  <view class='flex-center'>
+    <view>华峰安防</view>
+  </view>
+  <form bindsubmit="formSubmit">
+    <view class='form'>
+      <view class='form-item clearfix'>
+        <view class='icon pull-left'>
+          <image class='full' src='../../resources/icon-user.png'></image>
+        </view>
+        <view class='pull-left'>
+          <input class='input-text' name="userName" value='{{ userName }}' placeholder="请输入用户名" />
+        </view>
+      </view>
+      <view class='form-item clearfix'>
+        <view class='icon pull-left'>
+          <image class='full' src='../../resources/icon-pwd.png'></image>
+        </view>
+        <view class='pull-left'>
+          <input class="input-text" password="true" name="userPwd" value='{{ userPwd }}' placeholder="请输入登陆密码" />
+        </view>
+      </view>
+      <view class='form-item'>
+        <button class="weui-btn" type="primary" formType="submit">确定</button>
+      </view>
+    </view>
+  </form>
+</view>

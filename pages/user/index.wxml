@@ -1,0 +1,17 @@
+<view class="user-info">
+  <view class='user-content clearfix'>
+    <view class='pull-left'>
+      <view class="user-icon">
+        <image class='full' src="../../resources/icon-logo-user.png"></image>
+      </view>
+    </view>
+    <view class="pull-left">
+      <view class="user-text">
+        用户名：{{ userName }}
+      </view>
+    </view>
+  </view>
+  <view class='user-footer'>
+    <button class="weui-btn" type="primary" bindtap='logOut'>退出登陆</button>
+  </view>
+</view>

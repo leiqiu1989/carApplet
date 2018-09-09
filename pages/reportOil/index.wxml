@@ -1,0 +1,40 @@
+<view class='report'>
+  <view class="weui-cell weui-cell_select bg-white">
+    <view class="weui-cell__bd">
+      <picker bindchange="bindCarChange" value="{{carIndex}}" range-key="licenseplate" range="{{carList}}">
+        <view class="weui-select">{{carList[carIndex].licenseplate}}</view>
+      </picker>
+    </view>
+  </view>
+  <view class='toolbar clearfix'>
+    <view class='button pull-left prevDay' data-type="yesterday" bindtap="search">前一天</view>
+    <view class="date pull-left">
+      <picker mode="date" value="{{date}}" end="{{ endDate }}" bindchange="bindDateChange">
+        <view class="weui-input date-text">{{date}}</view>
+      </picker>
+    </view>
+    <view class='button pull-right afterDay' data-type="afterday" bindtap="search">后一天</view>
+  </view>
+  <view class='chart-list flex-center'>
+    <canvas class='oil-canvas' canvas-id="oilCanvas"></canvas>
+  </view>
+  <view class='oil-list' wx:if="{{ List.length > 0 }}">
+    <scroll-view scroll-y='true' class='full'>
+      <view class="oil-item" wx:for="{{List}}" wx:key="{{ index }}">
+        <view class="item-block">
+          <view class="weui-flex">
+            <view class="weui-flex__item">
+              <view class="placeholder align-center">{{ item.gpstime }}</view>
+            </view>
+            <view class="weui-flex__item">
+              <view class="placeholder align-center">{{ item.oil }}L</view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </scroll-view>
+  </view>
+  <view class="weui-loadmore weui-loadmore_line" wx:else hidden="{{ emptyData }}">
+    <view class="weui-loadmore__tips weui-loadmore__tips_in-line">暂无数据</view>
+  </view>
+</view>
