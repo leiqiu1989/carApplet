@@ -25,7 +25,9 @@ Page({
     includePoints: [],
     mapList: [],
     hiddenMark: true,
-    markerDetail: {}
+    markerDetail: {},
+    lng: 113.096008,
+    lat: 23.016548
   },
   showInput: function() {
     this.setData({
@@ -96,7 +98,16 @@ Page({
         latitude: parseFloat(item.lat),
         longitude: parseFloat(item.lng),
         width: 48,
-        height: 48
+        height: 48,
+        callout: {
+          content: item.licenseplate,
+          borderRadius: 4,
+          fontSize: 12,
+          display: 'ALWAYS',
+          textAlign: 'center',
+          color: '#333',
+          padding: 4
+        }
       })
     })
     this.setData({
@@ -166,6 +177,11 @@ Page({
       url: '../track/index?plateNo=' + _plateNo
     });
   },
+  enterMap:function(e){
+    var _markerid = 'list_'+e.currentTarget.id;
+    this.changeMode();
+    this.markertabProcess(_markerid);
+  },
   markerSelected: function(isClose) {
     var me = this;
     var _markerid = this.data.markerId;
@@ -173,9 +189,11 @@ Page({
       var marker = me.data.markers[index];
       marker.iconPath = item.online == '在线' ?
         "../../resources/marker-online.png" : '../../resources/marker-offline.png';
+      marker.callout.color = '#333';
       if (marker.id == _markerid && !isClose) {
         marker.iconPath = item.online == '在线' ?
           "../../resources/marker-online-selected.png" : '../../resources/marker-offline-selected.png';
+        marker.callout.color = '#1AAD1A';
       }
     });
     this.setData({
@@ -183,15 +201,18 @@ Page({
     })
   },
   // marker点击事件
-  markertap: function(e) {
+  markertab: function(e) {
     var markerId = e.markerId;
+    this.markertabProcess(markerId);
+  },
+  markertabProcess: function (markerId){
     var mapList = this.data.mapList;
-    var list = mapList.filter(function(item) {
+    var list = mapList.filter(function (item) {
       return 'list_' + item.vid == markerId;
     });
     var data = {};
     if (list.length) {
-      list = list.map(function(item) {
+      list = list.map(function (item) {
         if (item.online == '在线') {
           item.cls = 'online';
           item.iconUrl = '../../resources/icon-online.png';
@@ -206,7 +227,9 @@ Page({
         hiddenMark: false,
         markerDetail: data,
         switchCls: 'switch-patch',
-        markerId: markerId
+        markerId: markerId,
+        lng: parseFloat(data.lng),
+        lat: parseFloat(data.lat)
       });
       this.markerSelected();
     }

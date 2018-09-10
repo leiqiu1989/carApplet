@@ -26,7 +26,10 @@ Page({
     hiddenMark: true,
     timer: null,
     iconUrl: '../../resources/list.png',
-    modeText: '列表'
+    modeText: '列表',
+    activeCls:'',
+    lng: 113.096008,
+    lat: 23.016548
   },
   changeMode: function() {
     var _mapShow = this.data.mapShow;
@@ -139,6 +142,9 @@ Page({
             inputVal: "",
             switchCls: '',
             hiddenMark: true,
+            markerId: '',
+            lng: 113.096008,
+            lat: 23.016548
           })
         },
         loading: false
@@ -243,7 +249,7 @@ Page({
     var obj = this.getDataByTabIndex(tabIndex, isFilter);
     var data = obj.mapData || [];
     var _markers = [],
-      _includePoints = [];
+      _includePoints = [];     
     data.forEach(function(item) {
       _includePoints.push({
         latitude: parseFloat(item.lat),
@@ -256,7 +262,16 @@ Page({
         latitude: parseFloat(item.lat),
         longitude: parseFloat(item.lng),
         width: 48,
-        height: 48
+        height: 48,
+        callout:{
+          content: item.licenseplate,
+          borderRadius:4,
+          fontSize:12,
+          display:'ALWAYS',
+          textAlign:'center',          
+          color:'#333',
+          padding:4
+        }
       })
     })
     this.setData({
@@ -288,6 +303,12 @@ Page({
       url: '../track/index?plateNo=' + _plateNo
     });
   },
+  // 车辆定位
+  carPosition: function (e) {
+    var index = parseInt( e.currentTarget.id);
+    var markerId = 'list_' + this.data.mapList[index].vid;
+    this.markerTapProcess(markerId);
+  },
   markerSelected: function(isClose) {
     var me = this;
     var _markerid = this.data.markerId;
@@ -295,9 +316,11 @@ Page({
       var marker = me.data.markers[index];
       marker.iconPath = item.online == '在线' ?
         "../../resources/marker-online.png" : '../../resources/marker-offline.png';
+      marker.callout.color = '#333';
       if (marker.id == _markerid && !isClose) {
         marker.iconPath = item.online == '在线' ?
           "../../resources/marker-online-selected.png" : '../../resources/marker-offline-selected.png';
+        marker.callout.color ='#1AAD1A';
       }
     });
     this.setData({
@@ -307,13 +330,16 @@ Page({
   // marker点击事件
   markertap: function(e) {
     var markerId = e.markerId;
+    this.markerTapProcess(markerId);
+  },
+  markerTapProcess: function (markerId){
     var mapList = this.data.mapList;
-    var list = mapList.filter(function(item) {
+    var list = mapList.filter(function (item) {
       return 'list_' + item.vid == markerId;
     });
     var data = {};
     if (list.length) {
-      list = list.map(function(item) {
+      list = list.map(function (item) {
         if (item.online == '在线') {
           item.cls = 'online';
           item.iconUrl = '../../resources/icon-online.png';
@@ -323,12 +349,14 @@ Page({
         }
         return item;
       });
-      data = list[0];
+      data = list[0];      
       this.setData({
         hiddenMark: false,
         markerDetail: data,
         switchCls: 'switch-patch',
-        markerId: markerId
+        markerId: markerId,
+        lng:parseFloat(data.lng),
+        lat:parseFloat(data.lat)
       });
       this.markerSelected();
     }
@@ -337,7 +365,8 @@ Page({
     this.setData({
       hiddenMark: true,
       markerDetail: {},
-      switchCls: ''
+      switchCls: '',
+      markerId:''
     });
     this.markerSelected(true);
   }

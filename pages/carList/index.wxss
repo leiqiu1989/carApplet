@@ -5,3 +5,8 @@
 .weui-navbar__slider {
   background-color: #4fa0fb;
 }
+
+.enterMap{
+  color: #92979E;
+  font-size: 14px;
+}

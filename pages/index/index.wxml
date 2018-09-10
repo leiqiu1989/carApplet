@@ -30,7 +30,7 @@
   </view>
   <view class="weui-tab__panel no-padding">
     <view class="weui-tab__content">
-      <map wx:if="{{ mapShow && mapHeight > 0 }}" id="map" longitude="113.096008" latitude="23.016548" scale="14" markers="{{markers}}" include-points="{{ includePoints }}" bindmarkertap="markertap" style="width:100%;height:{{mapHeight}}px">
+      <map wx:if="{{ mapShow && mapHeight > 0 }}" id="map" longitude="{{ lng }}" latitude="{{ lat }}" scale="14" markers="{{markers}}" include-points="{{ includePoints }}" bindmarkertap="markertap" style="width:100%;height:{{mapHeight}}px">
         <cover-view class='cover-view-image' hidden='{{ !mapShow }}'>
           <cover-view class='flex-center'>
             <cover-image class='image-icon' src="../../resources/online.png"></cover-image>
@@ -66,6 +66,16 @@
                 <cover-image class='track-icon' src='../../resources/icon-track.png'></cover-image>
                 轨迹回放
               </cover-view>
+            </cover-view>
+          </cover-view>
+        </cover-view>
+        <cover-view class="carlist-position">
+          <cover-view class="carlist-position-title">
+            车辆列表
+          </cover-view>
+          <cover-view class='carlist-position-content'>
+            <cover-view class="carlist-position-item {{ markerId =='list_'+item.vid ? 'carlist-position-item-active':'' }}" bindtap='carPosition' id="{{index}}" wx:for="{{mapList}}" wx:key="index">
+              {{ item.licenseplate }}
             </cover-view>
           </cover-view>
         </cover-view>

@@ -30,7 +30,7 @@
   </view>
   <view class="weui-tab__panel no-padding">
     <view class="weui-tab__content">
-      <map wx:if="{{ mapShow && mapHeight > 0 }}" id="map" longitude="113.096008" latitude="23.016548" scale="14" markers="{{markers}}" include-points="{{ includePoints }}" bindmarkertap="markertap" style="width:100%;height:{{mapHeight}}px">
+      <map wx:if="{{ mapShow && mapHeight > 0 }}" id="map" longitude="{{ lng }}" latitude="{{ lat }}" scale="14" markers="{{markers}}" include-points="{{ includePoints }}" bindmarkertap="markertab" style="width:100%;height:{{mapHeight}}px">
         <cover-view class='cover-view-image' hidden='{{ !mapShow }}'>
           <cover-view class='flex-center'>
             <cover-image class='image-icon' src="../../resources/online.png"></cover-image>
@@ -80,10 +80,15 @@
               <view class="content">
                 <view class='item-block' wx:for="{{List}}" wx:key="{{ vid }}">
                   <view class='item-title'>
-                    <view class='item-title-plate'>{{ item.licenseplate }}</view>
-                    <view class='{{ item.cls }}'>
-                      <image src='{{ item.iconUrl }}' class='status-icon'></image>
-                      <view class='status-text'>{{ item.online }}</view>
+                    <view>
+                      <view class='pull-left {{ item.cls }}'>
+                        <image src='{{ item.iconUrl }}' class='status-icon'></image>
+                        <view class='status-text'>{{ item.online }}</view>
+                      </view>
+                      <view class='item-title-plate pull-left margin-left-20'>{{ item.licenseplate }}</view>
+                    </view>
+                   <view class='enterMap' id="{{ item.vid }}" bindtap='enterMap'>
+                     进入地图模式 >
                     </view>
                   </view>
                   <view class='item-content'>

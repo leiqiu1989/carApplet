@@ -63,6 +63,9 @@
 .margin-right-20 {
   margin-right: 20px;
 }
+.margin-left-20{
+  margin-left: 20px;
+}
 
 .trackFilter .weui-flex__item {
   text-align: center;
