@@ -27,7 +27,8 @@ Page({
     timer: null,
     iconUrl: '../../resources/list.png',
     modeText: '列表',
-    transformCls:'',
+    arrorUrl:'../../resources/arrow_state_grey_collapsed.png',
+    isHide:false,
     lng: 113.096008,
     lat: 23.016548
   },
@@ -73,11 +74,12 @@ Page({
     }
   },
   transform:function(e){
-    var oldCls = this.data.transformCls;
-    var newCls = oldCls ? '' :'carlist-trigon-transform';
+    var _isHide = this.data.isHide;    
     this.setData({
-      transformCls:newCls
-    })
+      isHide:!_isHide,
+      arrorUrl: _isHide ? '../../resources/arrow_state_grey_collapsed.png':
+      '../../resources/arrow_state_grey_expanded.png'
+    });
   },
   // 过滤数据并显示
   filterData: function() {
@@ -150,7 +152,8 @@ Page({
             switchCls: '',
             hiddenMark: true,
             markerId: '',
-            transformCls:'',
+            arrorUrl: '../../resources/arrow_state_grey_collapsed.png',
+            isHide: false,
             lng: 113.096008,
             lat: 23.016548
           })
