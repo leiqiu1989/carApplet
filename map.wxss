@@ -24,7 +24,7 @@
 }
 
 .switch-patch {
-  bottom: 180px;
+  bottom: 190px;
 }
 
 .cover-view-image {

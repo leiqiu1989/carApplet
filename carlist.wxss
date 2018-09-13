@@ -42,7 +42,10 @@
 }
 
 .item-content-short {
-  width: 70%;
+  width: 50%;
+}
+.item-content-long{
+  width: 100%;
 }
 
 .item-content-block {
@@ -56,7 +59,7 @@
   padding: 5px;
   letter-spacing: 2px;
   position: absolute;
-  top: 12px;
+  top: 8px;
   right: 10px;
   font-size: 12px;
 }

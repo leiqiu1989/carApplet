@@ -60,7 +60,8 @@
             </cover-view>
             <cover-view class='item-content'>
               <cover-view class='item-content-block item-content-short'>速度：{{ markerDetail.speed }}Km/h</cover-view>
-              <cover-view class='item-content-block item-content-short'>状态：{{ markerDetail.status }}</cover-view>
+              <cover-view class='item-content-block item-content-long'>状态：{{ markerDetail.status }}</cover-view>
+              <cover-view class='item-content-block item-content-long'>GPS时间：{{ markerDetail.gpstime }}</cover-view>
               <cover-view class='item-content-block ellipsis'>位置：{{ markerDetail.location }}</cover-view>
               <cover-view class='item-content-track' bindtap='trackHistory' data-plateno="{{ markerDetail.licenseplate }}">
                 <cover-image class='track-icon' src='../../resources/icon-track.png'></cover-image>
@@ -87,13 +88,14 @@
                       </view>
                       <view class='item-title-plate pull-left margin-left-20'>{{ item.licenseplate }}</view>
                     </view>
-                   <view class='enterMap' id="{{ item.vid }}" bindtap='enterMap'>
-                     进入地图模式 >
+                    <view class='enterMap' id="{{ item.vid }}" bindtap='enterMap'>
+                      进入地图模式 >
                     </view>
                   </view>
                   <view class='item-content'>
                     <view class='item-content-block item-content-short'>速度：{{ item.speed }}Km/h</view>
-                    <view class='item-content-block item-content-short'>状态：{{ item.status }}</view>
+                    <view class='item-content-block item-content-long'>状态：{{ item.status }}</view>
+                    <view class='item-content-block item-content-long'>GPS时间：{{ item.gpstime }}</view>
                     <view class='item-content-block'>位置：{{ item.location }}</view>
                     <view class='item-content-track' bindtap='trackHistory' data-plateno="{{ item.licenseplate }}">
                       <image class='track-icon' src='../../resources/icon-track.png'></image> 轨迹回放

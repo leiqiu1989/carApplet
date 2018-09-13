@@ -27,7 +27,7 @@ Page({
     timer: null,
     iconUrl: '../../resources/list.png',
     modeText: '列表',
-    activeCls:'',
+    transformCls:'',
     lng: 113.096008,
     lat: 23.016548
   },
@@ -71,6 +71,13 @@ Page({
       this.closeMarkerDetail();
       this.renderMapList(this.data.activeIndex, true);
     }
+  },
+  transform:function(e){
+    var oldCls = this.data.transformCls;
+    var newCls = oldCls ? '' :'carlist-trigon-transform';
+    this.setData({
+      transformCls:newCls
+    })
   },
   // 过滤数据并显示
   filterData: function() {
@@ -143,6 +150,7 @@ Page({
             switchCls: '',
             hiddenMark: true,
             markerId: '',
+            transformCls:'',
             lng: 113.096008,
             lat: 23.016548
           })
