@@ -26,6 +26,8 @@ Page({
     mapList: [],
     hiddenMark: true,
     markerDetail: {},
+    arrorUrl: '../../resources/arrow_state_grey_collapsed.png',
+    isHide: false,
     lng: 113.096008,
     lat: 23.016548
   },
@@ -82,6 +84,14 @@ Page({
     });
     this.renderMapList(this.data.activeIndex);
   },
+  transform: function (e) {
+    var _isHide = this.data.isHide;
+    this.setData({
+      isHide: !_isHide,
+      arrorUrl: _isHide ? '../../resources/arrow_state_grey_collapsed.png' :
+        '../../resources/arrow_state_grey_expanded.png'
+    });
+  },  
   renderMapList(tabIndex, isFilter) {
     var data = this.getDataByTabIndex(tabIndex, isFilter);
     var _markers = [],
@@ -180,7 +190,7 @@ Page({
   enterMap:function(e){
     var _markerid = 'list_'+e.currentTarget.id;
     this.changeMode();
-    this.markertabProcess(_markerid);
+    this.markerTabProcess(_markerid);
   },
   markerSelected: function(isClose) {
     var me = this;
@@ -200,12 +210,18 @@ Page({
       markers: this.data.markers
     })
   },
+  // 车辆定位
+  carPosition: function (e) {
+    var index = parseInt(e.currentTarget.id);
+    var markerId = 'list_' + this.data.mapList[index].vid;
+    this.markerTabProcess(markerId);
+  },
   // marker点击事件
   markertab: function(e) {
     var markerId = e.markerId;
-    this.markertabProcess(markerId);
+    this.markerTabProcess(markerId);
   },
-  markertabProcess: function (markerId){
+  markerTabProcess: function (markerId){
     var mapList = this.data.mapList;
     var list = mapList.filter(function (item) {
       return 'list_' + item.vid == markerId;
@@ -238,7 +254,8 @@ Page({
     this.setData({
       hiddenMark: true,
       markerDetail: {},
-      switchCls: ''
+      switchCls: '',
+      markerId: ''
     });
     this.markerSelected(true);
   }

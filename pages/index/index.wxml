@@ -71,9 +71,9 @@
           </cover-view>
         </cover-view>
         <cover-view class="carlist-position-title">
-            车辆列表
-            <cover-image src='{{ arrorUrl }}' class="carlist-trigon" bindtap='transform'></cover-image>
-          </cover-view>
+          车辆列表
+          <cover-image src='{{ arrorUrl }}' class="carlist-trigon" bindtap='transform'></cover-image>
+        </cover-view>
         <cover-view class="carlist-position {{ isHide ? 'hide':'' }}">
           <cover-view class="carlist-position-content">
             <cover-view class="carlist-position-item {{ markerId =='list_'+item.vid ? 'carlist-position-item-active':'' }}" bindtap='carPosition' id="{{index}}" wx:for="{{mapList}}" wx:key="index">
